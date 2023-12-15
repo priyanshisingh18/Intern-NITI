@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #converter {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 200px;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 220px;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="converter">
+    <h2>Currency Converter</h2>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <br>
+    <select id="fromCurrency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add more currency options as needed -->
+    </select>
+    <br>
+    <select id="toCurrency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add more currency options as needed -->
+    </select>
+    <br>
+    <button onclick="convert()">Convert</button>
+    <br>
+    <h3>Result: <span id="result">0.00</span></h3>
+</div>
+
+<script>
+    function convert() {
+        var amount = parseFloat(document.getElementById('amount').value);
+        var fromCurrency = document.getElementById('fromCurrency').value;
+        var toCurrency = document.getElementById('toCurrency').value;
+
+        // You can replace the conversion rates with the latest rates
+        var conversionRates = {
+            'USD': 1,
+            'EUR': 0.85,
+            'GBP': 0.74
+            // Add more currency conversion rates as needed
+        };
+
+        var result = amount * conversionRates[toCurrency] / conversionRates[fromCurrency];
+        document.getElementById('result').innerText = result.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
